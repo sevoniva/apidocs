@@ -1,0 +1,56 @@
+---
+title: 调用前准备
+description: 创建 API Key，获取接口地址
+---
+
+
+## 创建 API Key
+
+<Steps>
+  <Step title="登录控制台">
+    [登录控制台](https://token.jinruntech.com/login)
+  </Step>
+  <Step title="进入 API Keys">
+    左侧菜单进入 **API Keys**
+  </Step>
+  <Step title="新建 Key">
+    点击 **新建**，填写名称（建议按用途命名，如 `cherry-studio`、`cline-dev`）
+  </Step>
+  <Step title="复制密钥">
+    复制生成的 `sk-` 开头密钥
+  </Step>
+</Steps>
+
+<Callout type="warn">
+  API Key 即账户凭证，泄露会导致额度被盗用。不同场景建议创建不同的 Key，便于隔离和管理。
+</Callout>
+
+## 接口地址
+
+**Base URL：**
+
+```
+https://token.jinruntech.com/v1
+```
+
+**可用端点：**
+
+| 端点 | 说明 | 格式 |
+|------|------|------|
+| `POST /v1/chat/completions` | 聊天补全 | OpenAI |
+| `POST /v1/responses` | Responses API | OpenAI |
+| `POST /v1/messages` | Messages API | Claude |
+| `POST /v1/images/generations` | 图像生成 | OpenAI |
+| `POST /v1/audio/transcriptions` | 语音转文字 | OpenAI |
+| `POST /v1/embeddings` | 文本嵌入 | OpenAI |
+| `POST /v1/rerank` | 重排序 | OpenAI |
+
+客户端填 Base URL 即可，具体路径由客户端自动拼接。
+
+<Callout type="info">
+  Gemini 格式使用 `https://token.jinruntech.com/v1beta`，详见 [Gemini 接入](/docs/api/openai-format)。
+</Callout>
+
+## Key 丢失或泄露
+
+进入 [控制台](https://token.jinruntech.com) 删除旧 Key，创建新 Key，将新 Key 更新到各客户端即可。删除后旧 Key 立即失效，不影响账户余额。

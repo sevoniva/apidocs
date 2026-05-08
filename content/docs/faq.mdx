@@ -1,0 +1,64 @@
+---
+title: 常见问题
+description: 排查指南
+---
+
+
+## 连接问题
+
+<Accordions>
+  <Accordion title="连接失败 / 404">
+    - 检查 Base URL 是否为 `https://token.jinruntech.com/v1`
+    - 检查 API Key 是否复制完整，前后是否有空格
+    - 检查网络能否正常访问 [控制台](https://token.jinruntech.com)
+  </Accordion>
+  <Accordion title="API Key 无效">
+    - 确认该 Key 未被删除或重置
+    - 检查额度是否异常消耗，如怀疑泄露立即删除重建
+  </Accordion>
+  <Accordion title="模型不存在">
+    - 确认模型 ID 拼写正确
+    - 部分客户端需手动输入模型 ID，找 "自定义模型" 或 "+" 按钮添加
+  </Accordion>
+  <Accordion title="响应慢">
+    - 复杂模型生成时间较长
+    - 高峰期（20:00-23:00）可能排队
+    - 可切换至 `deepseek-chat` 等轻量模型提速
+  </Accordion>
+</Accordions>
+
+## 功能支持
+
+<Accordions>
+  <Accordion title="是否支持 Function Calling">
+    支持。`tools` 和 `tool_choice` 参数正常使用。多轮调用时需保留历史 `tool_calls` 和 `tool_call_id`。
+  </Accordion>
+  <Accordion title="是否支持 Vision">
+    支持。`gpt-4o` 和 `claude-3-5-sonnet` 等模型可传入 base64 图片：
+
+    ```python
+    messages=[{
+        "role": "user",
+        "content": [
+            {"type": "text", "text": "描述这张图片"},
+            {"type": "image_url", "image_url": {"url": "data:image/png;base64,..."}}
+        ]
+    }]
+    ```
+  </Accordion>
+  <Accordion title="频率限制">
+    默认限额一般够用。如触发 rate limit，稍等几秒重试。需更高额度联系管理员。
+  </Accordion>
+  <Accordion title="Claude Code 怎么配">
+    Claude Code 走 Anthropic 协议，在 `~/.claude/settings.json` 中配置：
+
+    ```json
+    {
+      "env": {
+        "ANTHROPIC_BASE_URL": "https://token.jinruntech.com/v1",
+        "ANTHROPIC_AUTH_TOKEN": "你的sk-密钥"
+      }
+    }
+    ```
+  </Accordion>
+</Accordions>

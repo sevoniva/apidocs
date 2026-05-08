@@ -1,0 +1,71 @@
+---
+title: OpenCode
+description: 命令行 AI 编程助手，支持 75+ 种模型提供商
+---
+
+
+## 安装
+
+macOS / Linux：
+
+```bash
+curl -fsSL https://opencode.ai/install | bash
+```
+
+或 npm 安装（需 Node.js 18+）：
+
+```bash
+npm install -g opencode-ai
+```
+
+验证：
+
+```bash
+opencode -v
+```
+
+## 配置
+
+编辑或新建 `opencode.json`：
+
+- macOS / Linux：`~/.config/opencode/opencode.json`
+- Windows：`用户目录\.config\opencode\opencode.json`
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "custom": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Custom API",
+      "options": {
+        "baseURL": "https://token.jinruntech.com/v1",
+        "apiKey": "你的sk-密钥"
+      },
+      "models": {
+        "gpt-4o": {
+          "name": "gpt-4o",
+          "limit": {
+            "context": 128000,
+            "output": 4096
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+如需使用环境变量存储 Key，将 `apiKey` 替换为 `"{env:OPENCODE_API_KEY}"`，并在终端中设置对应变量。
+
+## 使用
+
+```bash
+opencode
+```
+
+启动后输入 `/models` 查看和切换模型。
+
+## VS Code 插件
+
+在 VS Code 扩展市场搜索 **opencode** 安装。可通过 `/connect` 命令搜索并配置 Provider，或参考 CLI 配置方式手动配置。

@@ -1,0 +1,21 @@
+{
+  "title": "编程工具",
+  "pages": [
+    "continue",
+    "cursor",
+    "windsurf",
+    "cline",
+    "codex",
+    "opencode",
+    "claude-code",
+    "openclaw",
+    "qwen-code",
+    "roo-code",
+    "zed",
+    "codebuddy",
+    "trae",
+    "hermes-agent",
+    "kilo-code"
+  ],
+  "defaultOpen": true
+}

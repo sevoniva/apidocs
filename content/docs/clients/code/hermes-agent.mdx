@@ -1,0 +1,57 @@
+---
+title: Hermes Agent
+description: NousResearch 出品的 Agent 工具
+---
+
+
+## 安装
+
+Linux / macOS：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash
+```
+
+Windows 需先安装 WSL2，在 WSL2 中执行上方命令。
+
+安装完成后重新加载终端：
+
+```bash
+source ~/.bashrc   # 或 source ~/.zshrc
+```
+
+验证：
+
+```bash
+hermes --version
+```
+
+## 配置
+
+执行快速设置向导：
+
+```bash
+hermes setup
+```
+
+<Steps>
+  <Step title="选择 Quick setup">
+    选择 Quick setup
+  </Step>
+  <Step title="选择供应商">
+    选择自定义供应商（或如已预置则直接选）
+  </Step>
+  <Step title="填写参数">
+    - **API Key**：你的 `sk-` 密钥
+    - **Base URL**：`https://token.jinruntech.com/v1`
+    - **默认模型**：`gpt-4o`
+  </Step>
+</Steps>
+
+如已配置过按量付费 API，需切换为其他 Key 和 URL，编辑 `~/.hermes/.env` 文件修改即可。修改后打开新终端生效。
+
+## 使用
+
+```bash
+hermes
+```

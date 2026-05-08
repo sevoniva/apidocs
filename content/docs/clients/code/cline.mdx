@@ -1,0 +1,63 @@
+---
+title: Cline
+description: VS Code 插件和 CLI 工具，支持自动执行命令
+---
+
+
+## VS Code 插件
+
+<Steps>
+  <Step title="安装插件">
+    在 VS Code 扩展市场搜索 **Cline**，安装
+  </Step>
+  <Step title="打开面板">
+    打开 Cline 面板
+  </Step>
+  <Step title="配置 API">
+    设置中：
+    - **API Provider**：选择 `OpenAI Compatible`
+    - **Base URL**：`https://token.jinruntech.com/v1`
+    - **API Key**：你的 `sk-` 密钥
+    - **Model ID**：模型名称，如 `gpt-4o`
+  </Step>
+  <Step title="调整选项">
+    可选调整：
+    - 取消勾选 **Supports Images**（如模型不支持图片）
+    - **Context Window Size**：`1048576`
+    - **Temperature**：`1.0`
+  </Step>
+  <Step title="保存">
+    保存，开始使用
+  </Step>
+</Steps>
+
+## CLI 工具
+
+前置要求：Node.js 20 或更高版本。
+
+```bash
+npm install -g cline
+cline --version
+```
+
+配置：
+
+```bash
+cline auth -p openai -k 你的sk-密钥 -b https://token.jinruntech.com/v1 -m gpt-4o
+```
+
+参数说明：
+- `-p openai`：选择 OpenAI 兼容供应商
+- `-k`：API Key
+- `-b`：Base URL
+- `-m`：模型 ID
+
+也可直接执行 `cline auth` 进入交互式向导配置。
+
+启动：
+
+```bash
+cline
+```
+
+习惯旧版终端操作的可执行 `cline --tui`。

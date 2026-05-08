@@ -1,0 +1,51 @@
+---
+title: Claude 格式接入
+description: Python、curl 示例
+---
+
+
+<Tabs items={['Python', 'curl']}>
+  <Tab value="Python">
+
+```bash
+pip install anthropic
+```
+
+```python
+from anthropic import Anthropic
+
+client = Anthropic(
+    api_key="你的sk-密钥",
+    base_url="https://token.jinruntech.com/v1"
+)
+
+message = client.messages.create(
+    model="claude-3-5-sonnet-20241022",
+    max_tokens=1024,
+    messages=[{"role": "user", "content": "Hello"}]
+)
+
+print(message.content[0].text)
+```
+
+  </Tab>
+  <Tab value="curl">
+
+```bash
+curl https://token.jinruntech.com/v1/messages \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: 你的sk-密钥" \
+  -H "anthropic-version: 2023-06-01" \
+  -d '{
+    "model": "claude-3-5-sonnet-20241022",
+    "max_tokens": 1024,
+    "messages": [{"role": "user", "content": "Hello"}]
+  }'
+```
+
+  </Tab>
+</Tabs>
+
+<Callout type="warn">
+  认证头是 `x-api-key`，不是 `Authorization: Bearer`，注意区别。
+</Callout>

@@ -1,0 +1,40 @@
+---
+title: Continue
+description: VS Code / JetBrains 开源 AI 编程插件
+---
+
+
+## 配置步骤
+
+<Steps>
+  <Step title="安装插件">
+    在 VS Code 扩展市场搜索 **Continue**，安装
+  </Step>
+  <Step title="打开配置">
+    左侧打开 Continue 面板，点击右上角齿轮（或 `Ctrl+Shift+P` 输入 `Continue: Open Config`）
+  </Step>
+  <Step title="添加模型">
+    在 `config.json` 的 `models` 数组中添加：
+
+    ```json
+    {
+      "title": "GPT-4o",
+      "provider": "openai",
+      "model": "gpt-4o",
+      "apiKey": "你的sk-密钥",
+      "apiBase": "https://token.jinruntech.com/v1"
+    }
+    ```
+  </Step>
+  <Step title="选择模型">
+    保存，面板顶部下拉框选择该模型
+  </Step>
+</Steps>
+
+## 常用快捷键
+
+| 快捷键 | 功能 |
+|--------|------|
+| `Ctrl+L` | 侧边栏聊天 |
+| `Ctrl+I` | 内联编辑 |
+| `Ctrl+Shift+L` | 快速提问 |

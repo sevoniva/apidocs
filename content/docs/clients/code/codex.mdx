@@ -1,0 +1,69 @@
+---
+title: Codex
+description: OpenAI 出的命令行编程工具
+---
+
+
+## 安装
+
+前置要求：Node.js 18 或更高版本。
+
+```bash
+npm install -g @openai/codex@0.80.0
+```
+
+验证：
+
+```bash
+codex --version
+```
+
+## 配置
+
+创建或编辑配置文件：
+
+- macOS/Linux：`~/.codex/config.toml`
+- Windows：`用户目录\.codex\config.toml`
+
+```toml
+model = "gpt-4o"
+model_provider = "custom"
+
+[model_providers.custom]
+name = "custom"
+env_key = "MIMO_API_KEY"
+base_url = "https://token.jinruntech.com/v1"
+wire_api = "chat"
+```
+
+配置环境变量：
+
+<Tabs items={['macOS/Linux', 'Windows']}>
+  <Tab value="macOS/Linux">
+
+```bash
+echo 'export MIMO_API_KEY="你的sk-密钥"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+  </Tab>
+  <Tab value="Windows">
+
+```cmd
+setx MIMO_API_KEY "你的sk-密钥"
+```
+
+  </Tab>
+</Tabs>
+
+## 使用
+
+```bash
+codex
+```
+
+启动后选择跳过更新，即可使用配置的模型。
+
+<Callout type="warn">
+  仅支持 ChatCompletions API 的旧版本 Codex。Responses API 暂不支持。
+</Callout>

@@ -1,0 +1,10 @@
+{
+  "title": "聊天工具",
+  "pages": [
+    "cherry-studio",
+    "chatbox",
+    "lobechat",
+    "nextchat"
+  ],
+  "defaultOpen": true
+}

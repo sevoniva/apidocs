@@ -1,0 +1,100 @@
+---
+title: 快速开始
+description: 一行替换 Base URL，接入 30+ 主流大模型
+---
+
+基于 New API 构建的大模型 API 中转服务。替换 Base URL，原本写给 OpenAI 的代码即可接入 Claude、Gemini、DeepSeek 等 30+ 模型。
+
+**Base URL：** `https://token.jinruntech.com/v1`
+
+## 支持格式
+
+| 格式 | 端点 | 说明 |
+|------|------|------|
+| OpenAI Chat | `/v1/chat/completions` | 绝大多数客户端 |
+| OpenAI Responses | `/v1/responses` | Codex 等新版工具 |
+| Claude Messages | `/v1/messages` | Claude Code 等原生 Claude 客户端 |
+| Gemini | `/v1beta/models` | Gemini 原生 SDK |
+
+## 一行代码
+
+<Tabs items={['Python', 'Node.js', 'curl']}>
+  <Tab value="Python">
+
+```python
+from openai import OpenAI
+
+client = OpenAI(
+    api_key="jr-sk-***",
+    base_url="https://token.jinruntech.com/v1"
+)
+
+resp = client.chat.completions.create(
+    model="claude-sonnet",
+    messages=[{"role": "user", "content": "Hello"}]
+)
+```
+
+  </Tab>
+  <Tab value="Node.js">
+
+```javascript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  apiKey: 'jr-sk-***',
+  baseURL: 'https://token.jinruntech.com/v1',
+});
+
+const resp = await client.chat.completions.create({
+  model: 'claude-sonnet',
+  messages: [{ role: 'user', content: 'Hello' }],
+});
+```
+
+  </Tab>
+  <Tab value="curl">
+
+```bash
+curl https://token.jinruntech.com/v1/chat/completions \
+  -H "Authorization: Bearer jr-sk-***" \
+  -d '{"model":"claude-sonnet","messages":[{"role":"user","content":"Hello"}]}'
+```
+
+  </Tab>
+</Tabs>
+
+## 使用流程
+
+<Steps>
+  <Step title="创建 API Key">
+    [登录控制台](https://token.jinruntech.com/login)，进入 API Keys 页面，新建并复制密钥。
+  </Step>
+  <Step title="替换 Base URL">
+    将代码中的 `base_url` 或客户端的 API 地址改为 `https://token.jinruntech.com/v1`。
+  </Step>
+  <Step title="选择模型">
+    填入模型 ID，如 `gpt-4o`、`claude-sonnet`、`deepseek-chat`，开始使用。
+  </Step>
+</Steps>
+
+<Callout type="info">
+  绝大多数客户端使用 OpenAI 兼容格式即可。Claude Code 等原生 Claude 客户端用 Claude 格式，Gemini SDK 用 Gemini 格式。
+</Callout>
+
+## 相关文档
+
+<Cards>
+  <Card title="调用前准备" href="/docs/getting-started">
+    创建 API Key，查看全部端点
+  </Card>
+  <Card title="客户端配置" href="/docs/integration/overview">
+    20+ 客户端分步配置
+  </Card>
+  <Card title="代码接入" href="/docs/api/openai-format">
+    Python、Node.js、流式输出
+  </Card>
+  <Card title="常见问题" href="/docs/faq">
+    排查连接失败、Key 无效
+  </Card>
+</Cards>

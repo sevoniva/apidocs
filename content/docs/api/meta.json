@@ -1,0 +1,9 @@
+{
+  "title": "代码接入",
+  "pages": [
+    "openai-format",
+    "anthropic-format",
+    "streaming"
+  ],
+  "defaultOpen": true
+}

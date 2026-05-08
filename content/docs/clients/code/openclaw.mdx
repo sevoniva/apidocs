@@ -1,0 +1,66 @@
+---
+title: OpenClaw
+description: 开源 AI Agent 运行时，支持 200+ 模型
+---
+
+
+## 安装
+
+```bash
+npm install -g openclaw
+```
+
+## 配置
+
+编辑 `openclaw.json`（项目根目录或全局配置目录）：
+
+```json
+{
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "custom": {
+        "baseUrl": "https://token.jinruntech.com/v1",
+        "apiKey": "你的sk-密钥",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "gpt-4o",
+            "name": "gpt-4o",
+            "input": ["text"],
+            "contextWindow": 128000,
+            "maxTokens": 4096
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "custom/gpt-4o"
+      }
+    }
+  }
+}
+```
+
+provider 名称不要设为 `xiaomi`，避免与预置配置冲突。
+
+## 使用
+
+```bash
+openclaw
+```
+
+常用命令：
+
+| 命令 | 作用 |
+|------|------|
+| `openclaw doctor` | 检查配置 |
+| `openclaw infer` | 非交互式执行 |
+
+排查问题：
+1. 检查 provider ID 是否与配置一致
+2. 检查 `baseUrl` 末尾是否带 `/v1`
+3. 检查 [控制台](https://token.jinruntech.com) 是否有消费记录

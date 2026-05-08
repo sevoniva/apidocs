@@ -1,0 +1,8 @@
+{
+  "title": "客户端配置",
+  "pages": [
+    "chat",
+    "code"
+  ],
+  "defaultOpen": true
+}

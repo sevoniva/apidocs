@@ -1,0 +1,84 @@
+---
+title: Claude Code
+description: Anthropic 出品的命令行 AI 编程工具
+---
+
+
+## 安装
+
+前置要求：Node.js 18 或更高版本。
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+验证：
+
+```bash
+claude --version
+```
+
+## 配置
+
+配置前清除官方环境变量以免影响使用：
+
+```bash
+unset ANTHROPIC_AUTH_TOKEN ANTHROPIC_BASE_URL
+```
+
+创建 `~/.claude/settings.json`：
+
+```json
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://token.jinruntech.com/v1",
+    "ANTHROPIC_AUTH_TOKEN": "你的sk-密钥",
+    "ANTHROPIC_MODEL": "claude-3-5-sonnet-20241022",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude-3-5-sonnet-20241022",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude-3-5-sonnet-20241022",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude-3-5-sonnet-20241022"
+  }
+}
+```
+
+创建 `~/.claude.json`：
+
+```json
+{
+  "hasCompletedOnboarding": true
+}
+```
+
+重新打开终端使配置生效。
+
+## 使用
+
+```bash
+cd my-project
+claude
+```
+
+## VS Code 插件
+
+在 VS Code 扩展市场搜索 **Claude Code for VS Code** 安装。
+
+在 `settings.json` 中配置：
+
+```json
+{
+  "claudeCode.preferredLocation": "panel",
+  "claudeCode.selectedModel": "claude-3-5-sonnet-20241022",
+  "claudeCode.environmentVariables": [
+    {
+      "name": "ANTHROPIC_BASE_URL",
+      "value": "https://token.jinruntech.com/v1"
+    },
+    {
+      "name": "ANTHROPIC_AUTH_TOKEN",
+      "value": "你的sk-密钥"
+    }
+  ]
+}
+```
+
+若已安装 CLI，插件会自动复用 CLI 配置。

@@ -1,0 +1,89 @@
+---
+title: OpenAI 格式接入
+description: Python、Node.js、curl 示例
+---
+
+
+<Tabs items={['Python', 'Node.js', 'curl']}>
+  <Tab value="Python">
+
+```bash
+pip install openai
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI(
+    api_key="你的sk-密钥",
+    base_url="https://token.jinruntech.com/v1"
+)
+
+completion = client.chat.completions.create(
+    model="claude-sonnet",
+    messages=[
+        {"role": "user", "content": "Hello"}
+    ]
+)
+
+print(completion.choices[0].message.content)
+```
+
+**流式输出**：
+
+```python
+stream = client.chat.completions.create(
+    model="claude-sonnet",
+    messages=[{"role": "user", "content": "Hello"}],
+    stream=True
+)
+
+for chunk in stream:
+    if chunk.choices[0].delta.content:
+        print(chunk.choices[0].delta.content, end="")
+```
+
+  </Tab>
+  <Tab value="Node.js">
+
+```bash
+npm install openai
+```
+
+```javascript
+import OpenAI from 'openai';
+
+const client = new OpenAI({
+  apiKey: '你的sk-密钥',
+  baseURL: 'https://token.jinruntech.com/v1',
+});
+
+const completion = await client.chat.completions.create({
+  model: 'claude-sonnet',
+  messages: [{ role: 'user', content: 'Hello' }],
+});
+
+console.log(completion.choices[0].message.content);
+```
+
+  </Tab>
+  <Tab value="curl">
+
+```bash
+curl https://token.jinruntech.com/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer 你的sk-密钥" \
+  -d '{
+    "model": "claude-sonnet",
+    "messages": [{"role": "user", "content": "Hello"}]
+  }'
+```
+
+流式输出增加 `"stream": true`。
+
+  </Tab>
+</Tabs>
+
+<Callout type="info">
+  模型 ID 可以在 [控制台](https://token.jinruntech.com) 查看，不同渠道支持的模型不同。
+</Callout>

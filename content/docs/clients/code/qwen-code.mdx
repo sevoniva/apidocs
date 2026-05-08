@@ -1,0 +1,75 @@
+---
+title: Qwen Code
+description: 阿里云出品的编程助手
+---
+
+
+## CLI
+
+### 安装
+
+macOS / Linux：
+
+```bash
+bash -c "$(curl -fsSL https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/install-qwen.sh)" -s --source bailian
+```
+
+Windows：
+
+```cmd
+curl -fsSL -o %TEMP%\install-qwen.bat https://qwen-code-assets.oss-cn-hangzhou.aliyuncs.com/installation/install-qwen.bat && %TEMP%\install-qwen.bat --source bailian
+```
+
+验证：
+
+```bash
+qwen --version
+```
+
+### 配置
+
+编辑或新建 `settings.json`：
+
+- macOS / Linux：`~/.qwen/settings.json`
+- Windows：`用户目录\.qwen\settings.json`
+
+```json
+{
+  "env": {
+    "MIMO_API_KEY": "你的sk-密钥"
+  },
+  "modelProviders": {
+    "openai": [
+      {
+        "id": "gpt-4o",
+        "name": "gpt-4o",
+        "baseUrl": "https://token.jinruntech.com/v1",
+        "envKey": "MIMO_API_KEY"
+      }
+    ]
+  },
+  "security": {
+    "auth": {
+      "selectedType": "openai"
+    }
+  },
+  "model": {
+    "name": "gpt-4o"
+  },
+  "$version": 3
+}
+```
+
+配置前检查是否存在 `MIMO_API_KEY` 环境变量，如有请先清除或替换。
+
+### 使用
+
+```bash
+qwen
+```
+
+启动后输入 `/`，选择 `Switch model` 切换模型。
+
+## VS Code 插件
+
+在 VS Code 扩展市场搜索 **Qwen Code Companion** 安装。配置方式与 CLI 相同，读取同一 `settings.json` 文件。

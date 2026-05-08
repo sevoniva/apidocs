@@ -1,0 +1,62 @@
+---
+title: Curl 示例
+description: 不用装 SDK，命令行直接调
+---
+
+
+<Tabs items={['OpenAI 格式', '流式输出', 'Anthropic 格式']}>
+  <Tab value="OpenAI 格式">
+
+```bash
+curl https://token.jinruntech.com/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer 你的sk-密钥" \
+  -d '{
+    "model": "gpt-4o",
+    "messages": [
+      {"role": "user", "content": "你好"}
+    ]
+  }'
+```
+
+  </Tab>
+  <Tab value="流式输出">
+
+```bash
+curl https://token.jinruntech.com/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer 你的sk-密钥" \
+  -d '{
+    "model": "gpt-4o",
+    "messages": [
+      {"role": "user", "content": "你好"}
+    ],
+    "stream": true
+  }'
+```
+
+返回的是 SSE 格式，每一行以 `data:` 开头。
+
+  </Tab>
+  <Tab value="Anthropic 格式">
+
+```bash
+curl https://token.jinruntech.com/v1/messages \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: 你的sk-密钥" \
+  -H "anthropic-version: 2023-06-01" \
+  -d '{
+    "model": "claude-3-5-sonnet-20241022",
+    "max_tokens": 1024,
+    "messages": [
+      {"role": "user", "content": "你好"}
+    ]
+  }'
+```
+
+  </Tab>
+</Tabs>
+
+<Callout type="info">
+  Anthropic 的认证头是 `x-api-key`，不是 `Authorization: Bearer`。
+</Callout>

@@ -1,0 +1,63 @@
+---
+title: CodeBuddy
+description: 腾讯出品，IDE + VS Code 插件 + CLI
+---
+
+
+## IDE
+
+<Steps>
+  <Step title="下载安装">
+    从 [CodeBuddy 官网](https://codebuddy.cc) 下载安装 IDE
+  </Step>
+  <Step title="创建配置文件">
+    创建或修改配置文件 `models.json`：
+    - macOS：`~/.codebuddy/models.json`
+    - Windows：`用户目录\.codebuddy\models.json`
+
+    ```json
+    {
+      "models": [
+        {
+          "id": "gpt-4o",
+          "name": "gpt-4o",
+          "vendor": "custom",
+          "apiKey": "你的sk-密钥",
+          "url": "https://token.jinruntech.com/v1/chat/completions",
+          "supportsToolCall": true,
+          "supportsImages": false
+        }
+      ]
+    }
+    ```
+  </Step>
+  <Step title="选择模型">
+    关闭 Auto mode，打开模型列表，选择配置的模型
+  </Step>
+</Steps>
+
+## VS Code 插件
+
+在 VS Code 扩展市场搜索 **Tencent Cloud CodeBuddy** 安装，配置方式与 IDE 相同，读取同一 `models.json` 文件。
+
+## CLI
+
+安装（需 Node.js 18.20+）：
+
+```bash
+npm install -g @tencent-ai/codebuddy-code
+```
+
+验证：
+
+```bash
+codebuddy --version
+```
+
+配置方式与 IDE 相同。启动：
+
+```bash
+codebuddy
+```
+
+启动后通过 `/model` 查看或切换模型，通过 `/status` 查看当前使用的模型。
