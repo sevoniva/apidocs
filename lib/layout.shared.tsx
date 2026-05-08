@@ -7,7 +7,7 @@ export function baseOptions(): BaseLayoutProps {
       title: (
         <span className="flex items-center gap-2.5">
           <img
-            src="/logo.png"
+            src="/docs-assets/logo.png"
             alt="logo"
             className="rounded-full"
             style={{ width: 56, height: 56, objectFit: 'cover' }}
