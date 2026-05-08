@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 金润永信 API 文档
 
-## Getting Started
+基于 [Fumadocs](https://fumadocs.vercel.app) 构建的 API 文档站点。
 
-First, run the development server:
+## 技术栈
+
+- Next.js 15 + React 19
+- TypeScript
+- Tailwind CSS
+- Fumadocs UI
+
+## 本地开发
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+访问 http://localhost:3000/docs
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 构建
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+输出到 `out/` 目录，静态部署。
 
-To learn more about Next.js, take a look at the following resources:
+## 目录结构
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+content/docs/          # 文档内容（MDX）
+├── index.mdx          # 快速开始
+├── getting-started.mdx
+├── faq.mdx
+├── security.mdx
+├── api/               # API 接入文档
+├── integration/       # 客户端配置总览
+└── clients/           # 各客户端分步配置
+app/docs/              # 文档路由
+app/(home)/            # 首页
+components/mdx.tsx     # MDX 组件注册
+public/                # 静态资源（logo、icon）
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 添加新文档
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. 在 `content/docs/` 下创建 `.mdx` 文件
+2. 如需新分类，在对应目录创建 `meta.json`
+3. 可用组件：`Cards`、`Card`、`Steps`、`Step`、`Callout`、`Tabs`、`Tab`
